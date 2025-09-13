@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Blog</title>
+    <link
+      rel="stylesheet"
+      href="assets/vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        background-color: #f9fbfd;
+        min-height: 100vh;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      /* Import font modern */
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap");
+
+      /* Hero Section */
+      .header h1 {
+        position: relative;
+        font-size: 2.3rem;
+        font-weight: 800;
+        color: #0d47a1;
+        text-shadow: 0 2px 6px rgba(255, 255, 255, 0.8);
+        padding: 12px 28px;
+        background: rgba(255, 255, 255, 0.65);
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .parallax h1 {
+        position: relative;
+        z-index: 1;
+        font-family: "Poppins", sans-serif;
+        color: #fff;
+        font-weight: 700;
+        font-size: 2.2rem;
+        text-align: center;
+        letter-spacing: 1px;
+        text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.8);
+        animation: slideFadeUp 1.5s ease;
+        margin: 0;
+        padding: 8px 16px;
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 12px;
+      }
+
+      /* Animasi masuk */
+      @keyframes slideFadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Card Blog */
+      .card {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        transform: translateY(40px);
+        overflow: hidden;
+      }
+
+      .card.show {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.8s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      .card-title {
+        font-weight: 600;
+        color: #0d47a1;
+      }
+
+      .card-text {
+        color: #444;
+      }
+
+      .btn-primary {
+        background: #007bff;
+        border: none;
+        border-radius: 8px;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+        transform: scale(1.05);
+        background: #0056b3;
+      }
+
+      /* Card Background Bootstrap */
+      .bg-bootstrap {
+        background: url("bootstrap.png") no-repeat center center;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-bootstrap .card-body {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-bootstrap .card-title {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .bg-bootstrap .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-bootstrap .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-bootstrap .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Card Background Web (pakai web.png) */
+      .bg-web {
+        background: url("web.png") no-repeat center center;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Tambahan overlay agar lebih gelap */
+      .bg-web::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.25) 40%,
+          /* tengah */ rgba(0, 0, 0, 0.55) 100% /* bawah tetap agak gelap */
+        );
+        border-radius: 12px;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-web .card-body {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-web .card-title {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .bg-web .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-web .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-web .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Card Background CSS (pakai css.png, sama style dengan web) */
+      .bg-css {
+        background: url("css.png") no-repeat center center;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-css .card-body {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-css .card-title {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .bg-css .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-css .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-css .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+      .bg-js {
+        background: url("js.png") no-repeat center 25%;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-js .card-body {
+        position: relative;
+        z-index: 1; /* pastikan teks di atas overlay */
+      }
+
+      .bg-js .card-title,
+      .bg-js .card-text {
+        color: #fff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9); /* biar makin jelas */
+      }
+
+      /* Tombol baca selengkapnya di card JS */
+      .bg-js .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+        display: inline-block; /* biar ikut lebar konten */
+        align-self: flex-start; /* supaya rata kiri */
+      }
+
+      .bg-js .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      .bg-css .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-css .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-css .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+      /* Card Background HTML (pakai html.png) */
+      .bg-html {
+        background: url("html.png") no-repeat center center;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-html .card-body {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-html .card-title {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .bg-html .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-html .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-html .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+      /* Card Background Frontend (pakai frontend.png) */
+      .bg-frontend {
+        background: url("frontend.png") no-repeat center center;
+        background-size: cover;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 240px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efek overlay lebih terang di atas, gelap di bawah */
+      .bg-html::before,
+      .bg-frontend::before,
+      .bg-bootstrap::before,
+      .bg-css::before,
+      .bg-js::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0.15) 0%,
+          /* atas lebih terang */ rgba(0, 0, 0, 0.35) 40%,
+          /* pertengahan agak gelap */ rgba(0, 0, 0, 0.75) 100%
+            /* bawah tetap gelap */
+        );
+        border-radius: 12px;
+      }
+
+      .bg-frontend .card-body {
+        position: relative;
+        z-index: 1;
+      }
+
+      .bg-frontend .card-title {
+        font-weight: 700;
+        font-size: 1.3rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.9);
+        margin-bottom: 8px;
+      }
+
+      .bg-frontend .card-text {
+        font-size: 1rem;
+        color: #ffffff;
+        text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.85);
+      }
+
+      .bg-frontend .btn-light {
+        margin-top: 15px;
+        background: #ffffff;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 18px;
+        font-weight: 600;
+        color: #0d47a1;
+        transition: all 0.3s ease;
+      }
+
+      .bg-frontend .btn-light:hover {
+        background: #0d47a1;
+        color: #fff;
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Hover zoom untuk gambar */
+      .card-img-top {
+        transition: transform 0.5s ease;
+        border-radius: 12px 12px 0 0;
+      }
+
+      .card:hover .card-img-top {
+        transform: scale(1.1);
+      }
+
+      /* Navbar */
+      .navbar {
+        background: #ffffff !important;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+        color: #0d47a1 !important;
+      }
+
+      .navbar .btn {
+        border-radius: 20px;
+      }
+
+      .navbar.shrink {
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        background: #0d47a1 !important;
+      }
+      .navbar.shrink .navbar-brand {
+        color: #fff !important;
+      }
+
+      /* Footer */
+      footer {
+        background: #212529;
+        color: #ffffff;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      footer a {
+        transition: color 0.3s ease;
+        color: #fff;
+      }
+
+      footer a:hover {
+        color: #0d6efd;
+      }
+
+      /* Scroll to top button */
+      #scrollTopBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: none;
+        border-radius: 50%;
+        padding: 10px 14px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 999;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Simple Blog</a>
+        <div>
+          <a href="about.html" class="btn btn-outline-primary btn-sm">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="parallax">
+      <h1>Selamat Datang di Blog Saya</h1>
+    </div>
+
+    <!-- Daftar Blog -->
+    <div class="container mt-5 mb-5">
+      <h1 class="mb-4 text-center text-primary">Daftar Blog</h1>
+      <div class="row">
+        <!-- Card Blog 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-bootstrap">
+            <div class="card-body">
+              <h5 class="card-title">Belajar Bootstrap</h5>
+              <p class="card-text">
+                Panduan dasar untuk memahami framework CSS Bootstrap 5.3.
+              </p>
+              <a href="detail.html?blog=1" class="btn btn-light fw-bold"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Blog 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-web">
+            <div class="card-body">
+              <h5 class="card-title">Tips Menjadi Web Developer</h5>
+              <p class="card-text">
+                Beberapa tips praktis untuk memulai karir sebagai pengembang
+                web.
+              </p>
+              <a href="detail.html?blog=2" class="btn btn-light fw-bold"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Blog 3 (CSS pakai css.png) -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-css">
+            <div class="card-body">
+              <h5 class="card-title">Menguasai CSS</h5>
+              <p class="card-text">
+                Bagaimana cara membuat tampilan web lebih menarik dengan CSS
+                modern.
+              </p>
+              <a href="detail.html?blog=3" class="btn btn-light fw-bold"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Blog 4 (JavaScript pakai js.png) -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-js">
+            <div class="card-body">
+              <h5 class="card-title">JavaScript Dasar</h5>
+              <p class="card-text">
+                Memahami konsep dasar JavaScript untuk membuat web lebih
+                interaktif.
+              </p>
+              <a href="detail.html?blog=4" class="btn btn-light fw-bold"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Blog 5 (HTML pakai html.png) -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-html">
+            <div class="card-body">
+              <h5 class="card-title">Belajar HTML</h5>
+              <p class="card-text">
+                Dasar-dasar HTML yang wajib dikuasai oleh setiap web developer
+                pemula.
+              </p>
+              <a href="detail.html?blog=5" class="btn btn-light fw-bold">
+                Baca Selengkapnya
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Blog 6 (Frontend pakai frontend.png) -->
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 bg-frontend">
+            <div class="card-body">
+              <h5 class="card-title">Framework Frontend</h5>
+              <p class="card-text">
+                Mengenal berbagai framework frontend populer seperti React, Vue,
+                dan Angular.
+              </p>
+              <a href="detail.html?blog=6" class="btn btn-light fw-bold"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center mt-auto">
+      <p>&copy; 2025 Simple Blog by geyesss</p>
+      <div>
+        <a href="#"><i class="bi bi-github fs-4 me-3"></i></a>
+        <a href="#"><i class="bi bi-linkedin fs-4 me-3"></i></a>
+        <a href="#"><i class="bi bi-instagram fs-4"></i></a>
+      </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollTopBtn" class="btn btn-primary">
+      <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <!-- Script animasi -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".card");
+
+        function revealCards() {
+          const triggerBottom = window.innerHeight * 0.9;
+          cards.forEach((card) => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+              card.classList.add("show");
+            }
+          });
+        }
+
+        window.addEventListener("scroll", revealCards);
+        revealCards();
+      });
+
+      // Navbar shrink saat scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("shrink");
+        } else {
+          navbar.classList.remove("shrink");
+        }
+      });
+
+      // Scroll to top button
+      const scrollBtn = document.getElementById("scrollTopBtn");
+      window.addEventListener("scroll", () => {
+        scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+      });
+      scrollBtn.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>

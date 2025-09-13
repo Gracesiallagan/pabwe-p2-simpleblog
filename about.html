@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Saya</title>
+    <link
+      rel="stylesheet"
+      href="assets/vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      body {
+        font-family: "Poppins", Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: #212529;
+      }
+
+      .navbar-brand {
+        font-weight: bold;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+        color: white;
+        padding: 60px 20px;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 180px;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 5px solid white;
+        margin-bottom: 15px;
+      }
+
+      .hero h1 {
+        font-weight: 700;
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+      }
+
+      .btn-home {
+        background-color: #ffc107;
+        color: #212529;
+        font-weight: 600;
+        border-radius: 30px;
+        padding: 8px 20px;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s ease;
+      }
+
+      .btn-home:hover {
+        background-color: #e0a800;
+        transform: translateY(-2px);
+      }
+
+      /* Card Tentang Saya */
+      .card {
+        border: none;
+        border-radius: 12px;
+      }
+
+      .card h2 {
+        font-weight: 700;
+        color: #0d47a1;
+      }
+
+      /* Keahlian */
+      .progress {
+        height: 22px;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      /* Pendidikan */
+      .list-group-item {
+        border: none;
+        padding: 12px 15px;
+      }
+
+      /* Footer */
+      footer {
+        background: #111;
+        color: #fff;
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      footer a {
+        color: #fff;
+        transition: color 0.3s ease;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: #0d6efd;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Simple Blog</a>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <img src="aku.png" alt="Foto Grace" class="profile-img" />
+      <h1>Halo, Saya Grace Siallagan 👋</h1>
+      <p>Mahasiswa IT Del | Web Developer Enthusiast | Pecinta Kpop</p>
+      <div class="mb-3">
+        <a href="mailto:grace@email.com" class="btn btn-light btn-sm me-2">
+          <i class="bi bi-envelope-fill"></i> Email
+        </a>
+        <a href="https://wa.me/6281234567890" class="btn btn-success btn-sm">
+          <i class="bi bi-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+      <a href="index.html" class="btn-home">
+        <i class="bi bi-house-door-fill"></i> Kembali ke Home
+      </a>
+    </section>
+
+    <!-- Tentang Saya -->
+    <main class="container my-5">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="card shadow-lg p-4">
+            <h2 class="text-center mb-4">Tentang Saya</h2>
+            <p>
+              Saya <strong>Grace Siallagan</strong>, seorang mahasiswa yang
+              memiliki passion besar dalam dunia teknologi khususnya
+              <em>Web Development</em>. Saya percaya bahwa dunia digital terus
+              berkembang pesat, sehingga saya selalu berusaha mengasah skill dan
+              belajar hal baru setiap hari.
+            </p>
+            <p>
+              Melalui blog sederhana ini, saya membagikan perjalanan belajar,
+              proyek, serta ide-ide kreatif seputar dunia pemrograman. Selain
+              coding, saya juga suka membaca buku motivasi dan mendengarkan
+              musik di Spotify saat ngoding. Ngoding asix lho.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Keahlian -->
+      <section class="mt-5">
+        <h2 class="text-center mb-4">Keahlian</h2>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <p class="mb-1">HTML & CSS</p>
+            <div class="progress">
+              <div class="progress-bar bg-primary" style="width: 90%">90%</div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <p class="mb-1">JavaScript</p>
+            <div class="progress">
+              <div class="progress-bar bg-warning" style="width: 75%">75%</div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <p class="mb-1">Bootstrap</p>
+            <div class="progress">
+              <div class="progress-bar bg-success" style="width: 80%">80%</div>
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <p class="mb-1">Python</p>
+            <div class="progress">
+              <div class="progress-bar bg-danger" style="width: 70%">70%</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pendidikan -->
+      <section class="mt-5">
+        <h2 class="text-center mb-4">Pendidikan</h2>
+        <ul class="list-group list-group-flush shadow-sm rounded">
+          <li class="list-group-item">
+            <strong>Institut Teknologi Del</strong> – S1 Informatika (2023 -
+            2027)
+          </li>
+          <li class="list-group-item">
+            <strong>SMA Negeri 1 Simanindo</strong> – IPA (2020 - 2023)
+          </li>
+          <li class="list-group-item">
+            <strong>SMP N 1 Simanindo</strong> – (2017 - 2020)
+          </li>
+          <li class="list-group-item">
+            <strong>SD N 9 Tomok</strong> – (2011 - 2017)
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center">
+      <p>&copy; 2025 Simple Blog by geyesss</p>
+      <div>
+        <a href="#"><i class="bi bi-github fs-5 me-3"></i></a>
+        <a href="#"><i class="bi bi-linkedin fs-5 me-3"></i></a>
+        <a href="#"><i class="bi bi-instagram fs-5"></i></a>
+      </div>
+    </footer>
+  </body>
+</html>

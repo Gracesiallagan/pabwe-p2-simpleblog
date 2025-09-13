@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Blog</title>
+    <link
+      rel="stylesheet"
+      href="assets/vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      /* ===== NAVBAR STYLE ===== */
+      header {
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      header .navbar-brand {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: #fff !important;
+      }
+
+      header .nav-link {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #f8f9fa !important;
+        margin-left: 1rem;
+        position: relative;
+        transition: color 0.3s ease;
+      }
+
+      header .nav-link:hover {
+        color: #ffc107 !important;
+      }
+
+      header .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        left: 0;
+        bottom: -4px;
+        background: #ffc107;
+        transition: width 0.3s ease;
+      }
+
+      header .nav-link:hover::after {
+        width: 100%;
+      }
+
+      header .nav-link.active {
+        color: #ffc107 !important;
+      }
+
+      /* ===== BLOG CARD ===== */
+      .blog-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        display: none;
+        border-left: 6px solid #0d6efd;
+      }
+
+      .blog-card h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #0d6efd;
+      }
+
+      .blog-meta {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #e9ecef;
+        padding-bottom: 0.5rem;
+      }
+
+      .blog-card p {
+        line-height: 1.7;
+        margin-bottom: 1rem;
+      }
+
+      .btn-back {
+        background-color: #0d6efd;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-back:hover {
+        background-color: #0b5ed7;
+        transform: translateY(-2px);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        margin-top: auto;
+        background-color: #212529;
+        color: #f8f9fa;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      footer a {
+        font-size: 1.2rem;
+        margin: 0 8px;
+        color: #f8f9fa;
+        transition: color 0.3s ease;
+      }
+
+      footer a:hover {
+        color: #0d6efd !important;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <nav class="container d-flex justify-content-between align-items-center">
+        <a class="navbar-brand" href="index.html">Simple Blog</a>
+        <ul class="nav">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="about.html">About</a>
+          </li>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Konten Blog -->
+    <main class="container my-5">
+      <!-- Blog 1 -->
+      <section id="blog1" class="blog-card">
+        <h1>Belajar Bootstrap</h1>
+        <p class="blog-meta">📅 Diposting 11 Sept 2025 oleh Grace</p>
+        <p>
+          Bootstrap adalah framework CSS populer yang membantu developer membuat
+          tampilan web modern, cepat, dan responsif tanpa harus menulis CSS dari
+          nol.
+        </p>
+        <p>
+          Bootstrap 5.3 hadir dengan fitur baru, utilities tambahan, serta
+          peningkatan performa untuk membangun layout web dengan lebih mudah.
+          Banyak komponen siap pakai seperti navbar, card, dan modal yang bisa
+          langsung dipakai.
+        </p>
+        <p>
+          Dengan memahami Bootstrap, developer dapat menghemat waktu
+          pengembangan dan lebih fokus pada logika aplikasi.
+        </p>
+      </section>
+
+      <!-- Blog 2 -->
+      <section id="blog2" class="blog-card">
+        <h1>Tips Menjadi Web Developer</h1>
+        <p class="blog-meta">📅 Diposting 15 Sept 2025 oleh Grace</p>
+        <p>
+          Menjadi web developer dimulai dengan menguasai dasar HTML, CSS, dan
+          JavaScript. Setelah itu, bangun project kecil untuk melatih logika dan
+          keterampilan.
+        </p>
+        <p>
+          Gunakan Git sebagai version control, ikuti tren framework modern, dan
+          kembangkan portfolio untuk menarik calon klien maupun perusahaan.
+        </p>
+        <p>
+          Jangan lupa untuk aktif dalam komunitas, membaca dokumentasi resmi,
+          serta mengikuti course online agar pengetahuan selalu up to date.
+        </p>
+      </section>
+
+      <!-- Blog 3 -->
+      <section id="blog3" class="blog-card">
+        <h1>Menguasai CSS</h1>
+        <p class="blog-meta">📅 Diposting 18 Sept 2025 oleh Grace</p>
+        <p>
+          CSS memungkinkan developer mengatur tampilan website. Fitur modern
+          seperti Flexbox dan Grid memudahkan membuat layout yang responsif.
+        </p>
+        <p>
+          Selain itu, animasi dan transition memberi pengalaman visual lebih
+          menarik untuk pengguna. Dengan CSS, tampilan website bisa terlihat
+          profesional hanya dengan sedikit kode tambahan.
+        </p>
+        <p>
+          Penguasaan CSS juga membantu developer lebih mudah beradaptasi dengan
+          framework frontend populer seperti Tailwind atau Bootstrap.
+        </p>
+      </section>
+
+      <!-- Blog 4 -->
+      <section id="blog4" class="blog-card">
+        <h1>JavaScript Dasar</h1>
+        <p class="blog-meta">📅 Diposting 20 Sept 2025 oleh Grace</p>
+        <p>
+          JavaScript adalah bahasa inti untuk membuat website interaktif. Konsep
+          penting meliputi variabel, fungsi, perulangan, dan kondisi.
+        </p>
+        <p>
+          Dengan DOM manipulation, JavaScript bisa mengubah konten halaman
+          secara real-time sesuai interaksi pengguna.
+        </p>
+        <p>
+          Menguasai dasar JavaScript adalah langkah pertama sebelum masuk ke
+          library seperti React, Vue, atau Angular.
+        </p>
+      </section>
+
+      <!-- Blog 5 -->
+      <section id="blog5" class="blog-card">
+        <h1>Belajar HTML</h1>
+        <p class="blog-meta">📅 Diposting 22 Sept 2025 oleh Grace</p>
+        <p>
+          HTML adalah pondasi utama website. Tag seperti heading, paragraf,
+          link, gambar, list, dan form wajib dipahami setiap pemula.
+        </p>
+        <p>
+          Struktur HTML yang baik juga memudahkan penambahan CSS dan JavaScript
+          di tahap berikutnya. Selain itu, HTML5 hadir dengan banyak elemen
+          semantik yang memperjelas arti konten.
+        </p>
+        <p>
+          Dengan memahami HTML secara mendalam, developer dapat memastikan
+          website lebih mudah diakses dan SEO-friendly.
+        </p>
+      </section>
+
+      <!-- Blog 6 -->
+      <section id="blog6" class="blog-card">
+        <h1>Framework Frontend</h1>
+        <p class="blog-meta">📅 Diposting 25 Sept 2025 oleh Grace</p>
+        <p>
+          Framework frontend seperti React, Vue, dan Angular mempermudah
+          pengembangan aplikasi web modern yang kompleks.
+        </p>
+        <p>
+          React unggul dalam fleksibilitas, Vue ramah untuk pemula, sedangkan
+          Angular cocok untuk project berskala besar.
+        </p>
+        <p>
+          Menguasai salah satu framework ini akan membuka banyak peluang kerja,
+          karena hampir semua perusahaan teknologi menggunakannya dalam
+          pengembangan aplikasi.
+        </p>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <p class="mb-1">&copy; 2025 Simple Blog by geyesss</p>
+      <div>
+        <a href="#"><i class="bi bi-github"></i></a>
+        <a href="#"><i class="bi bi-linkedin"></i></a>
+        <a href="#"><i class="bi bi-instagram"></i></a>
+      </div>
+    </footer>
+
+    <script>
+      // ambil query string (?blog=1)
+      const params = new URLSearchParams(window.location.search);
+      const blogId = params.get("blog");
+
+      // tampilkan artikel sesuai parameter
+      if (blogId) {
+        const section = document.getElementById("blog" + blogId);
+        if (section) {
+          section.style.display = "block";
+        }
+      } else {
+        // default kalau tidak ada parameter
+        document.getElementById("blog1").style.display = "block";
+      }
+    </script>
+  </body>
+</html>
