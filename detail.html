@@ -83,8 +83,8 @@
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         padding: 2rem;
         margin-bottom: 2rem;
-        display: none;
         border-left: 6px solid #0d6efd;
+        display: none;
       }
 
       .blog-card h1 {
@@ -112,6 +112,9 @@
         font-weight: 600;
         border-radius: 8px;
         transition: all 0.3s ease;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        display: inline-block;
       }
 
       .btn-back:hover {
@@ -138,6 +141,16 @@
       footer a:hover {
         color: #0d6efd !important;
       }
+
+      /* ===== TARGETING TANPA JS ===== */
+      .blog-card:target {
+        display: block;
+      }
+      /* default tampil blog1 kalau tidak ada target */
+      #blog1:target,
+      body:not(:has(:target)) #blog1 {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -151,7 +164,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="about.html">About</a>
-          </li>
           </li>
         </ul>
       </nav>
@@ -284,22 +296,5 @@
         <a href="#"><i class="bi bi-instagram"></i></a>
       </div>
     </footer>
-
-    <script>
-      // ambil query string (?blog=1)
-      const params = new URLSearchParams(window.location.search);
-      const blogId = params.get("blog");
-
-      // tampilkan artikel sesuai parameter
-      if (blogId) {
-        const section = document.getElementById("blog" + blogId);
-        if (section) {
-          section.style.display = "block";
-        }
-      } else {
-        // default kalau tidak ada parameter
-        document.getElementById("blog1").style.display = "block";
-      }
-    </script>
   </body>
 </html>
